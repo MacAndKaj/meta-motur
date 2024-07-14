@@ -12,7 +12,7 @@ commands:
           command: "mkdir -p \"$(realpath -m <<parameters.path>>)\""
       - run:
           name: "Change directory"
-          command: cd <<parameters.path>> && pwd && ls -ls
+          command: "cd \"$(realpath -m <<parameters.path>>)\" && pwd && ls -ls"
 jobs:
   build-recipes:
     docker:
