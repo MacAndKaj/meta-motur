@@ -20,17 +20,17 @@ jobs:
 
     steps:
       - run:
-          name: "Motur Environment"
-          command: echo 'export WORSPACE_PATH="/root/project"' >> "$BASH_ENV" && env
+          name: "Environment"
+          command: env
       - change-workdir
       - checkout:
-          path: $(WORSPACE_PATH)/meta-motur
+          path: /root/project/meta-motur
       - change-workdir
       - run:
           name: "Setup"
           command: |
-                   chmod +x ${WORSPACE_PATH}/meta-motur/scripts/setup.sh && \
-                   ${WORSPACE_PATH}/meta-motur/scripts/setup.sh ${WORSPACE_PATH}
+                   chmod +x /root/project/meta-motur/scripts/setup.sh && \
+                   /root/project/meta-motur/scripts/setup.sh /root/project
       - change-workdir
 
 workflows:
