@@ -4,7 +4,7 @@ commands:
   change-workdir:
     parameters:
       path:
-        default: ${CIRCLE_WORKING_DIRECTORY}
+        default: $CIRCLE_WORKING_DIRECTORY
         type: string
     steps:
       - run:
