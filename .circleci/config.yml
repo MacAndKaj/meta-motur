@@ -15,6 +15,7 @@ jobs:
       - image: balena/yocto-build-env:24b1d67
 
     steps:
+      - change-workdir
       - checkout:
           path: "meta-motur"
       - change-workdir
