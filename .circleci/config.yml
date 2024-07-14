@@ -4,7 +4,7 @@ commands:
   change-workdir:
     parameters:
       path:
-        default: /root/project
+        default: ${PROJECT_PATH}
         type: string
     steps:
       - run:
@@ -24,7 +24,7 @@ jobs:
           command: "env"
       - change-workdir
       - checkout:
-          path: /root/project/meta-motur
+          path: ${PROJECT_PATH}/meta-motur
       - change-workdir
       - run:
           name: "Get env"
@@ -32,8 +32,8 @@ jobs:
       - run:
           name: "Setup"
           command: |
-                   chmod +x /root/project/meta-motur/scripts/setup.sh && \
-                   /root/project/meta-motur/scripts/setup.sh /root/project
+                   chmod +x ${PROJECT_PATH}/meta-motur/scripts/setup.sh && \
+                   ${PROJECT_PATH}/meta-motur/scripts/setup.sh ${PROJECT_PATH}
       - change-workdir
 
 workflows:

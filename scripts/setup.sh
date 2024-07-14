@@ -3,9 +3,9 @@
 # balena/yocto-build-env:24b1d67
 META_BRANCH=kirkstone
 
-git clone https://git.yoctoproject.org/poky -b $META_BRANCH
-git clone https://git.openembedded.org/meta-openembedded -b $META_BRANCH
-git clone https://git.yoctoproject.org/poky -b $META_BRANCH
+git clone https://git.yoctoproject.org/poky -b $META_BRANCH "$1"/poky
+git clone https://git.openembedded.org/meta-openembedded -b $META_BRANCH "$1"/meta-openembedded
+git clone https://github.com/ros/meta-ros.git -b $META_BRANCH "$1"/meta-ros
 
 source poky/oe-init-build-env
 
