@@ -21,5 +21,3 @@ bitbake-layers add-layer ../meta-motur
 # machine - setup from yocto (qemuarm64/qemux86-64/raspberrypi3-64)
 export MACHINE=$1
 export DISTRO=poky
-
-bitbake motoros-interfaces

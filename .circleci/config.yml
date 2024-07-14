@@ -1,23 +1,24 @@
 version: 2.1
 
+
 jobs:
   build-recipes:
     docker:
       - image: balena/yocto-build-env:24b1d67
 
-    # Add steps to the job
-    # See: https://circleci.com/docs/jobs-steps/#steps-overview & https://circleci.com/docs/configuration-reference/#steps
     steps:
-      # Checkout the code as the first step.
+      - run:
+          name: "Directory structure"
+          command: "mkdir meta-motur && cd meta-motur"
       - checkout
       - run:
           name: "Env info"
-          command: "pwd && ls -ls && env"
+          command: "cd ${CIRCLE_WORKING_DIRECTORY} && pwd && ls -ls && env"
+      - run:
+          name: "Setup"
+          command: "${CIRCLE_WORKING_DIRECTORY}/meta-motur/scripts/setup.sh"
 
-# Orchestrate jobs using workflows
-# See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
 workflows:
-  motur-workflow: # This is the name of the workflow, feel free to change it to better match your workflow.
-    # Inside the workflow, you define the jobs you want to run.
+  motur-workflow:
     jobs:
       - build-recipes
