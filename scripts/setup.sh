@@ -9,7 +9,6 @@ git clone https://git.yoctoproject.org/poky -b $META_BRANCH
 
 source poky/oe-init-build-env
 
-bitbake-layers add-layer ../meta-openembedded/meta-python
 bitbake-layers add-layer ../meta-openembedded/meta-oe
 bitbake-layers add-layer ../meta-openembedded/meta-python
 bitbake-layers add-layer ../meta-openembedded/meta-networking
