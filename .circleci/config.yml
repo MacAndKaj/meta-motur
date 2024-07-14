@@ -9,7 +9,10 @@ commands:
     steps:
       - run:
           name: "Check new directory"
-          command: mkdir -p <<parameters.path>>
+          command: |
+                  if [ ! -d <<parameters.path>> ] then; \
+                    mkdir -p <<parameters.path>> \
+                  fi
       - run:
           name: "Change directory"
           command: cd <<parameters.path>> && pwd && ls -ls
