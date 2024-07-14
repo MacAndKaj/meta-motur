@@ -41,8 +41,7 @@ jobs:
               /root/project/meta-motur/scripts/build_target.sh \
               -p /root/project \
               -m qemuarm64 \
-              -t motoros-common \
-              1>&2
+              -t motoros-common
 workflows:
   motur-workflow:
     jobs:

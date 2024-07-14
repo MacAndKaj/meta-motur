@@ -32,4 +32,4 @@ done
 
 source "$ROOTDIR_PATH"/poky/oe-init-build-env
 
-bitbake "$TARGET"
+bitbake "$TARGET" | tee /dev/tty
