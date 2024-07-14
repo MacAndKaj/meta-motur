@@ -24,7 +24,7 @@ jobs:
           command: "env"
       - change-workdir
       - checkout:
-          path: ${CIRCLE_WORKING_DIRECTORY}/meta-motur
+          path: /root/project/meta-motur
       - change-workdir
       - run:
           name: "Get env"
@@ -32,8 +32,8 @@ jobs:
       - run:
           name: "Setup"
           command: |
-                   chmod +x ${CIRCLE_WORKING_DIRECTORY}/meta-motur/scripts/setup.sh && \
-                   ${CIRCLE_WORKING_DIRECTORY}/meta-motur/scripts/setup.sh ${CIRCLE_WORKING_DIRECTORY}
+                   chmod +x /root/project/meta-motur/scripts/setup.sh && \
+                   /root/project/meta-motur/scripts/setup.sh /root/project
       - change-workdir
 
 workflows:
