@@ -9,7 +9,7 @@ commands:
     steps:
       - run:
           name: "Check new directory"
-          command: "[ ! -d \"$(realpath -m <<parameters.path>>)\" ] && mkdir -p \"$(realpath -m <<parameters.path>>)\""
+          command: "mkdir -p \"$(realpath -m <<parameters.path>>)\""
       - run:
           name: "Change directory"
           command: cd <<parameters.path>> && pwd && ls -ls
