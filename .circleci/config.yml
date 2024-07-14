@@ -27,7 +27,7 @@ jobs:
           name: "Setup"
           command: |
                    chmod +x ${CIRCLE_WORKING_DIRECTORY}/meta-motur/scripts/setup.sh && \
-                   ${CIRCLE_WORKING_DIRECTORY}/meta-motur/scripts/setup.sh
+                   ${CIRCLE_WORKING_DIRECTORY}/meta-motur/scripts/setup.sh ${CIRCLE_WORKING_DIRECTORY}
       - change-workdir
 
 workflows:
