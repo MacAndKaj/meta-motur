@@ -42,7 +42,7 @@ jobs:
               -p /root/project \
               -m qemuarm64 \
               -t motoros-common \
-              2>&1 
+              1>&2
 workflows:
   motur-workflow:
     jobs:
