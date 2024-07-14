@@ -8,7 +8,11 @@ commands:
         type: string
     steps:
       - run:
-          command: "cd ${CIRCLE_WORKING_DIRECTORY} && pwd && ls -ls && env"
+          name: "Check new directory"
+          command: "if [ !-d <<parameters.path>> ]; then mkdir <<parameters.path>>; echo \"Created <<parameters.path>>\" fi"
+      - run:
+          name: "Change directory"
+          command: "cd <<parameters.path>> && pwd && ls -ls && env"
 jobs:
   build-recipes:
     docker:
