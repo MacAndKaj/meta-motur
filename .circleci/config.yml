@@ -19,10 +19,16 @@ jobs:
       - image: balena/yocto-build-env:24b1d67
 
     steps:
+      - run:
+          name: "Get env"
+          command: "env"
       - change-workdir
       - checkout:
           path: ${CIRCLE_WORKING_DIRECTORY}/meta-motur
       - change-workdir
+      - run:
+          name: "Get env"
+          command: "env"
       - run:
           name: "Setup"
           command: |
