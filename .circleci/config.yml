@@ -9,10 +9,10 @@ commands:
     steps:
       - run:
           name: "Check new directory"
-          command: "mkdir -p <<parameters.path>>"
+          command: mkdir -p <<parameters.path>>
       - run:
           name: "Change directory"
-          command: "cd <<parameters.path>> && pwd && ls -ls"
+          command: cd <<parameters.path>> && pwd && ls -ls
 jobs:
   build-recipes:
     docker:
@@ -21,11 +21,13 @@ jobs:
     steps:
       - change-workdir
       - checkout:
-          path: "${CIRCLE_WORKING_DIRECTORY}/meta-motur"
+          path: ${CIRCLE_WORKING_DIRECTORY}/meta-motur
       - change-workdir
       - run:
           name: "Setup"
-          command: "${CIRCLE_WORKING_DIRECTORY}/meta-motur/scripts/setup.sh"
+          command: |
+                   chmod +x ${CIRCLE_WORKING_DIRECTORY}/meta-motur/scripts/setup.sh && \
+                   ${CIRCLE_WORKING_DIRECTORY}/meta-motur/scripts/setup.sh
       - change-workdir
 
 workflows:
