@@ -20,7 +20,8 @@ jobs:
 
     steps:
       - change-workdir
-      - checkout
+      - checkout:
+          path: "${CIRCLE_WORKING_DIRECTORY}/meta-motur"
       - change-workdir
       - run:
           name: "Setup"
