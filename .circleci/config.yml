@@ -1,6 +1,14 @@
 version: 2.1
 
-
+commands:
+  change-workdir:
+    parameters:
+      path:
+        default: "${CIRCLE_WORKING_DIRECTORY}"
+        type: string
+    steps:
+      - run:
+          command: "cd ${CIRCLE_WORKING_DIRECTORY} && pwd && ls -ls && env"
 jobs:
   build-recipes:
     docker:
@@ -8,14 +16,14 @@ jobs:
 
     steps:
       - run:
-          name: "Checkout"
-          command: "git clone -b ${CIRCLE_BRANCH} ${CIRCLE_REPOSITORY_URL}"
-      - run:
-          name: "Env info"
-          command: "cd ${CIRCLE_WORKING_DIRECTORY} && pwd && ls -ls && env"
+          name: "Prepare structure"
+          command: "mkdir meta-motur && cd meta-motur"
+      - checkout
+      - change-workdir
       - run:
           name: "Setup"
           command: "${CIRCLE_WORKING_DIRECTORY}/meta-motur/scripts/setup.sh"
+      - change-workdir
 
 workflows:
   motur-workflow:
