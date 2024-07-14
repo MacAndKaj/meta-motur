@@ -8,9 +8,8 @@ jobs:
 
     steps:
       - run:
-          name: "Directory structure"
-          command: "mkdir meta-motur && cd meta-motur"
-      - checkout
+          name: "Checkout"
+          command: "git clone -b ${CIRCLE_BRANCH} ${CIRCLE_REPOSITORY_URL}"
       - run:
           name: "Env info"
           command: "cd ${CIRCLE_WORKING_DIRECTORY} && pwd && ls -ls && env"
