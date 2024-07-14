@@ -15,10 +15,8 @@ jobs:
       - image: balena/yocto-build-env:24b1d67
 
     steps:
-      - run:
-          name: "Prepare structure"
-          command: "mkdir meta-motur && cd meta-motur"
-      - checkout
+      - checkout:
+          path: "meta-motur"
       - change-workdir
       - run:
           name: "Setup"
