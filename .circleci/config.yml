@@ -38,7 +38,11 @@ jobs:
       - run:
           name: "Build motoros-common"
           command: |
-              /root/project/meta-motur/scripts/build_target.sh -p /root/project -m qemuarm64 -t motoros-common
+              /root/project/meta-motur/scripts/build_target.sh \
+              -p /root/project \
+              -m qemuarm64 \
+              -t motoros-common \
+              2>&1 
 workflows:
   motur-workflow:
     jobs:
