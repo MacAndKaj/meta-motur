@@ -11,25 +11,32 @@ while [[ $# -gt 0 ]]; do
   case $1 in
     -m|--machine)
       MACHINE="$2"
+      echo "Machine set to $(MACHINE)"
       shift # past argument
       shift # past value
       ;;
     -p|--path)
       ROOTDIR_PATH="$2"
+      echo "Root directory path set to $(ROOTDIR_PATH)"
       shift # past argument
       shift # past value
       ;;
     -t|--target)
       TARGET="$2"
+      echo "Target set to $(TARGET)"
       shift # past argument
+      shift # past value
       ;;
     -*|--*)
       echo "Unknown option $1"
       exit 1
+      ;;
+    *)
+      shift
       ;;
   esac
 done
 
 source "$ROOTDIR_PATH"/poky/oe-init-build-env
 
-bitbake "$TARGET" | tee /dev/tty
+bitbake "$TARGET"
