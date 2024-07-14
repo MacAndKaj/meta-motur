@@ -4,15 +4,15 @@ commands:
   change-workdir:
     parameters:
       path:
-        default: ${CIRCLE_WORKING_DIRECTORY}
+        default: /root/project
         type: string
     steps:
       - run:
           name: "Check new directory"
-          command: "mkdir -p \"$(realpath -m <<parameters.path>>)\""
+          command: mkdir -p <<parameters.path>>
       - run:
           name: "Change directory"
-          command: "cd \"$(realpath -m <<parameters.path>>)\" && pwd && ls -ls"
+          command: cd <<parameters.path>> && pwd && ls -ls
 jobs:
   build-recipes:
     docker:
