@@ -27,12 +27,21 @@ jobs:
           path: /root/project/meta-motur
       - change-workdir
       - run:
-          name: "Setup"
+          name: "Prepare scripts"
           command: |
-                   chmod +x /root/project/meta-motur/scripts/setup.sh && \
-                   /root/project/meta-motur/scripts/setup.sh /root/project
+              chmod +x /root/project/meta-motur/scripts/setup.sh && \
+              chmod +x /root/project/meta-motur/scripts/build_target.sh
+      - run:
+          name: "Setup"
+          command: /root/project/meta-motur/scripts/setup.sh /root/project
       - change-workdir
-
+      - run:
+          name: "Build motoros-common"
+          command: |
+              /root/project/meta-motur/scripts/build_target.sh \
+              /root/project \
+              qemuarm64 \
+              motoros-common
 workflows:
   motur-workflow:
     jobs:
