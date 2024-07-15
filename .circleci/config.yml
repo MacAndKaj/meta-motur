@@ -30,19 +30,19 @@ jobs:
       - run:
           name: "Prepare scripts"
           command: |
-              pwd && ls -ls \
+              pwd && ls -ls && \
               chmod +x /home/admin/project/meta-motur/scripts/setup.sh && \
               chmod +x /home/admin/project/meta-motur/scripts/build_target.sh
       - run:
           name: "Setup"
           command: |
-              pwd && ls -ls \
+              pwd && ls -ls && \
               /home/admin/project/meta-motur/scripts/setup.sh /home/admin/project
       - change-workdir
       - run:
           name: "Build motoros-interfaces"
           command: |
-              pwd && ls -ls \
+              pwd && ls -ls && \
               /home/admin/project/meta-motur/scripts/build_target.sh \
               -p /home/admin/project \
               -m qemuarm64 \
