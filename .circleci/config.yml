@@ -4,7 +4,7 @@ commands:
   change-workdir:
     parameters:
       path:
-        default: /root/project
+        default: /home/admin/project
         type: string
     steps:
       - run:
@@ -25,22 +25,22 @@ jobs:
           command: env
       - change-workdir
       - checkout:
-          path: /root/project/meta-motur
+          path: /home/admin/project/meta-motur
       - change-workdir
       - run:
           name: "Prepare scripts"
           command: |
-              chmod +x /root/project/meta-motur/scripts/setup.sh && \
-              chmod +x /root/project/meta-motur/scripts/build_target.sh
+              chmod +x /home/admin/project/meta-motur/scripts/setup.sh && \
+              chmod +x /home/admin/project/meta-motur/scripts/build_target.sh
       - run:
           name: "Setup"
-          command: /root/project/meta-motur/scripts/setup.sh /root/project
+          command: /home/admin/project/meta-motur/scripts/setup.sh /home/admin/project
       - change-workdir
       - run:
           name: "Build motoros-common"
           command: |
-              /root/project/meta-motur/scripts/build_target.sh \
-              -p /root/project \
+              /home/admin/project/meta-motur/scripts/build_target.sh \
+              -p /home/admin/project \
               -m qemuarm64 \
               -t motoros-common
 workflows:
