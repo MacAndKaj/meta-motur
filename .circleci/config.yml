@@ -17,7 +17,7 @@ jobs:
   build-recipes:
     docker:
       - image: balena/yocto-build-env:24b1d67
-        user: admin
+        user: circleci
 
     steps:
       - run:
