@@ -2,6 +2,7 @@
 
 # balena/yocto-build-env:24b1d67
 META_BRANCH=kirkstone
+BUILDDIR="$1"/build
 
 git clone https://git.yoctoproject.org/poky -b $META_BRANCH "$1"/poky
 git clone https://git.openembedded.org/meta-openembedded -b $META_BRANCH "$1"/meta-openembedded
