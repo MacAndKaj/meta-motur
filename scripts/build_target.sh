@@ -37,8 +37,8 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-cat "$ROOTDIR_PATH"/build/conf/bblayers.conf
+source "$ROOTDIR_PATH"/poky/oe-init-build-env && pwd && ls -ls
 
-source "$ROOTDIR_PATH"/poky/oe-init-build-env
+cat conf/bblayers.conf
 
 bitbake "$TARGET"
