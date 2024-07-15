@@ -36,7 +36,8 @@ while [[ $# -gt 0 ]]; do
       ;;
   esac
 done
-BUILDDIR="$ROOTDIR_PATH"/build
+
+export BUILDDIR="$ROOTDIR_PATH"/build
 
 source "$ROOTDIR_PATH"/poky/oe-init-build-env && pwd && ls -ls
 
