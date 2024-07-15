@@ -37,12 +37,12 @@ jobs:
           command: /home/admin/project/meta-motur/scripts/setup.sh /home/admin/project
       - change-workdir
       - run:
-          name: "Build motoros-common"
+          name: "Build motoros-interfaces"
           command: |
               /home/admin/project/meta-motur/scripts/build_target.sh \
               -p /home/admin/project \
               -m qemuarm64 \
-              -t motoros-common
+              -t motoros-interfaces
 workflows:
   motur-workflow:
     jobs:
