@@ -17,6 +17,7 @@ jobs:
   build-recipes:
     docker:
       - image: balena/yocto-build-env:24b1d67
+        entrypoint: "passwd -d circleci"
         user: circleci
 
     steps:
