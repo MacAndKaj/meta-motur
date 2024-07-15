@@ -2,13 +2,12 @@
 
 # balena/yocto-build-env:24b1d67
 META_BRANCH=kirkstone
-export BUILDDIR="$1"/build
 
 git clone https://git.yoctoproject.org/poky -b $META_BRANCH "$1"/poky
 git clone https://git.openembedded.org/meta-openembedded -b $META_BRANCH "$1"/meta-openembedded
 git clone https://github.com/ros/meta-ros.git -b $META_BRANCH "$1"/meta-ros
 
-source "$1"/poky/oe-init-build-env && pwd && ls -ls
+source "$1"/poky/oe-init-build-env "$1"/build && pwd && ls -ls
 
 bitbake-layers add-layer "$1"/meta-openembedded/meta-oe
 bitbake-layers add-layer "$1"/meta-openembedded/meta-python
