@@ -12,7 +12,7 @@ commands:
           command: mkdir -p <<parameters.path>>
       - run:
           name: "Change directory"
-          command: cd <<parameters.path>> && pwd && ls -ls
+          command: cd <<parameters.path>> && pwd && ls -ls && tree -L 5
 jobs:
   build-recipes:
     docker:
