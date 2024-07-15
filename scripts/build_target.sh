@@ -41,4 +41,4 @@ source "$ROOTDIR_PATH"/poky/oe-init-build-env "$ROOTDIR_PATH"/build && pwd && ls
 
 cat conf/bblayers.conf
 
-bitbake -v "$TARGET"
+bitbake -v $TARGET
