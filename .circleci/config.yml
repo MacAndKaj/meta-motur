@@ -13,6 +13,29 @@ commands:
       - run:
           name: "Change directory"
           command: cd <<parameters.path>> && pwd && ls -ls
+
+  setup-workdir:
+    steps:
+      - run:
+          name: "Environment"
+          command: env
+      - change-workdir
+      - checkout:
+          path: /home/admin/project/meta-motur
+      - change-workdir
+      - run:
+          name: "Prepare scripts"
+          command: |
+              pwd && ls -ls && \
+              chmod +x /home/admin/project/meta-motur/scripts/setup.sh && \
+              chmod +x /home/admin/project/meta-motur/scripts/build_target.sh
+      - run:
+          name: "Setup"
+          command: |
+              pwd && ls -ls && \
+              /home/admin/project/meta-motur/scripts/setup.sh /home/admin/project
+      - change-workdir
+
 jobs:
   build-recipes:
     docker:
@@ -54,34 +77,16 @@ jobs:
         user: admin
 
     steps:
+      - setup-workdir
       - run:
-          name: "Environment"
-          command: env
-      - change-workdir
-      - checkout:
-          path: /home/admin/project/meta-motur
-      - change-workdir
-      - run:
-          name: "Prepare scripts"
-          command: |
-              pwd && ls -ls && \
-              chmod +x /home/admin/project/meta-motur/scripts/setup.sh && \
-              chmod +x /home/admin/project/meta-motur/scripts/build_target.sh
-      - run:
-          name: "Setup"
-          command: |
-              pwd && ls -ls && \
-              /home/admin/project/meta-motur/scripts/setup.sh /home/admin/project
-      - change-workdir
-      - run:
-          name: "Build motoros-interfaces"
+          name: "Build ros-image-world sdk"
           no_output_timeout: 1h
           command: |
               pwd && ls -ls && \
               /home/admin/project/meta-motur/scripts/build_target.sh \
               -p /home/admin/project \
               -m qemuarm64 \
-              -s ros-image-world
+              -s ros-image-core
 workflows:
   motur-workflow:
     jobs:
