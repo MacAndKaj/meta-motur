@@ -48,7 +48,42 @@ jobs:
               -p /home/admin/project \
               -m qemuarm64 \
               -t motoros-interfaces
+  build-sdk:
+    docker:
+      - image: macandkaj/yocto-motur-env:44a7adbb9e55
+        user: admin
+
+    steps:
+      - run:
+          name: "Environment"
+          command: env
+      - change-workdir
+      - checkout:
+          path: /home/admin/project/meta-motur
+      - change-workdir
+      - run:
+          name: "Prepare scripts"
+          command: |
+              pwd && ls -ls && \
+              chmod +x /home/admin/project/meta-motur/scripts/setup.sh && \
+              chmod +x /home/admin/project/meta-motur/scripts/build_target.sh
+      - run:
+          name: "Setup"
+          command: |
+              pwd && ls -ls && \
+              /home/admin/project/meta-motur/scripts/setup.sh /home/admin/project
+      - change-workdir
+      - run:
+          name: "Build motoros-interfaces"
+          no_output_timeout: 1h
+          command: |
+              pwd && ls -ls && \
+              /home/admin/project/meta-motur/scripts/build_target.sh \
+              -p /home/admin/project \
+              -m qemuarm64 \
+              -s ros-image-world
 workflows:
   motur-workflow:
     jobs:
       - build-recipes
+      - build-sdk

@@ -27,6 +27,12 @@ while [[ $# -gt 0 ]]; do
       shift # past argument
       shift # past value
       ;;
+    -s|--sdk)
+      TARGET="$2 -c populate_sdk"
+      echo "Target for sdk set to $2"
+      shift # past argument
+      shift # past value
+      ;;
     -*|--*)
       echo "Unknown option $1"
       exit 1
