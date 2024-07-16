@@ -51,7 +51,7 @@ jobs:
               pwd && ls -ls && \
               /home/admin/project/meta-motur/scripts/build_target.sh \
               -p /home/admin/project \
-              -m qemuarm64 \
+              -m qemux86-64 \
               -t motoros-interfaces
   build-sdk:
     docker:
@@ -67,7 +67,7 @@ jobs:
               pwd && ls -ls && \
               /home/admin/project/meta-motur/scripts/build_target.sh \
               -p /home/admin/project \
-              -m qemuarm64 \
+              -m qemux86-64 \
               -s ros-image-core
 workflows:
   motur-workflow:
